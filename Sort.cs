@@ -41,19 +41,22 @@ namespace Projeto_Grupo_D
             {
                 min = i;
                 for (int j = i + 1; j < array.Length; j++)
+                {
                     if (array[j] < array[min])
                     {
                         min = j;
                     }
-                if (min != i)
-                {
-                    aux = array[min];
-                    array[min] = array[i];
-                    array[i] = aux;
                 }
-                troca++;
+                if(i != min)
+                {
+                    //condição faz não ocorrer a troca se a posição de troca for a mesma 
+                    aux = array[i];
+                    array[i] = array[min];
+                    array[min] = aux;
+                    troca++;
+                }
             }
-            Console.WriteLine("Numero de trocas: " + troca/2); 
+            Console.WriteLine("Numero de trocas: " + troca); 
             return array;
         }
 
