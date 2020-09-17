@@ -266,6 +266,7 @@
             this.Controls.Add(this.gbMetodos);
             this.Controls.Add(this.dgArray);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "Ordena01";
             this.Text = "Ordenação de Vetores";
             ((System.ComponentModel.ISupportInitialize)(this.dgArray)).EndInit();

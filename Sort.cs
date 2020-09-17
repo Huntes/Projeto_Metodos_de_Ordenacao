@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Projeto_Grupo_D
-{
+{ 
     class Sort
     {
         public Sort() { }
@@ -33,7 +33,7 @@ namespace Projeto_Grupo_D
             return array;
         }
 
-        //Select Sort
+        //Select Sort*
         public int[] Select_Sort(int[] array)
         {
             int min, aux;
@@ -42,16 +42,18 @@ namespace Projeto_Grupo_D
                 min = i;
                 for (int j = i + 1; j < array.Length; j++)
                     if (array[j] < array[min])
+                    {
                         min = j;
+                    }
                 if (min != i)
                 {
                     aux = array[min];
                     array[min] = array[i];
                     array[i] = aux;
-                    troca++;
                 }
+                troca++;
             }
-            Console.WriteLine("Numero de trocas: " + troca);
+            Console.WriteLine("Numero de trocas: " + troca/2); 
             return array;
         }
 

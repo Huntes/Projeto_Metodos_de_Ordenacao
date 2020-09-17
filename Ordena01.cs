@@ -22,6 +22,7 @@ namespace Projeto_Grupo_D
         int guarda = 0;
         int[] T;
         int[] R;
+        int[] V = { 5,4,3,2,1 };
 
         private void cmdGerar_Click(object sender, EventArgs e)
         {
@@ -34,7 +35,7 @@ namespace Projeto_Grupo_D
 
             for (int i = 0; i < dgArray.ColumnCount; i++)
             {
-                dgArray.Rows[0].Cells[i].Value = N.Next(1, 30);
+                dgArray.Rows[0].Cells[i].Value = V[i];
                 T[i] = (int)dgArray.Rows[0].Cells[i].Value;
             }
         }
