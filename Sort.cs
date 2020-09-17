@@ -210,33 +210,31 @@ namespace Projeto_Grupo_D
         }
 
         // Shell Sort
-        public int[] Shell_Sort(int[] array)
+        public void ShellSort(int[] vetor)
         {
-            int i, j, pos, temp;
-            int n = array.Length;
-            pos = 3;
-            while (pos > 0)
+            int i = 0, j = 0, pos = 0, h = 1; 
+            int n = vetor.Length;
+            while (h < n)
             {
-                for (i = 0; i < n; i++)
-                {
-                    j = i;
-                    temp = array[i];
-                    while ((j >= pos) && (array[j - pos] > temp))
-                    {
-                        array[j] = array[j - pos];
-                        j = j - pos;
-                        troca++;
-                    }
-                    array[j] = temp;
-                }
-                if (pos / 2 != 0)
-                    pos = pos / 2;
-                else if (pos == 1)
-                    pos = 0;
-                else
-                    pos = 1;
+                h = h * 3 + 1;
             }
-            return array;
+            while (h > 0)
+            {
+                i = h + 1;
+                while (i < n)
+                {
+                    pos = vetor[i];
+                    j = i - h;
+                    while ((j >= 0) && (vetor[j] > pos))
+                    {
+                        vetor[j + 1] = vetor[j];
+                        vetor[j] = pos;
+                        j = j - h;
+                    }
+                    i++;
+                }
+                h = h / 3;
+            }
         }
     }
 
