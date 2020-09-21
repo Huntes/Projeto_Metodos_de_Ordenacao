@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Projeto_Grupo_D
-{ 
+{
     class Sort
     {
         public Sort() { }
@@ -47,16 +47,14 @@ namespace Projeto_Grupo_D
                         min = j;
                     }
                 }
-                if(i != min)
-                {
-                    //condição faz não ocorrer a troca se a posição de troca for a mesma 
-                    aux = array[i];
-                    array[i] = array[min];
-                    array[min] = aux;
-                    troca++;
-                }
+                //condição faz não ocorrer a troca se a posição de troca for a mesma 
+                aux = array[i];
+                array[i] = array[min];
+                array[min] = aux;
+                troca++;
+
             }
-            Console.WriteLine("Numero de trocas: " + troca); 
+            Console.WriteLine("Numero de trocas: " + troca);
             return array;
         }
 
@@ -210,32 +208,32 @@ namespace Projeto_Grupo_D
         // Shell Sort
         public int[] ShellSort(int[] vetor)
         {
-            int i = 0, j = 0, pos = 0, h = 1; 
-            int n = vetor.Length;
-            while (h < n)
+            int i, j, val, comp = 0;
+            int gap = 1;
+            while (gap < vetor.Length)
             {
-                h = h * 3 + 1;
+                gap = 3 * gap + 1;
             }
-            while (h > 0)
+            while (gap > 1)
             {
-                i = h + 1;
-                while (i < n)
+                gap /= 3;
+                for (i = gap; i < vetor.Length; i++)
                 {
-                    pos = vetor[i];
-                    j = i - h;
-                    while ((j >= 0) && (vetor[j] > pos))
+                    val = vetor[i];
+                    j = i;
+                    comp++;
+                    while (j >= gap && val < vetor[j - gap])
                     {
-                        vetor[j + 1] = vetor[j];
-                        vetor[j] = pos;
-                        j = j - h;
+                        vetor[j] = vetor[j - gap];
+                        j = j - gap;
                         troca++;
                     }
-                    i++;
+                    vetor[j] = val;
                 }
-                h = h / 3;
             }
             return vetor;
         }
     }
-
 }
+
+

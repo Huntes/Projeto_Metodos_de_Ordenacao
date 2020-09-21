@@ -23,7 +23,7 @@ namespace Projeto_Grupo_D
         int guarda = 0;
         int[] T;
         int[] R;
-        int[] V = { 5,8,6,2,7,3,9,4 };
+        int[] V = { 7,2,5,6,3,1,0,8,9,4 };
 
         private void cmdGerar_Click(object sender, EventArgs e)
         {
