@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Projeto_Grupo_D
         int guarda = 0;
         int[] T;
         int[] R;
-        int[] V = { 5,4,3,2,1 };
+        int[] V = { 5,8,6,2,7,3,9,4 };
 
         private void cmdGerar_Click(object sender, EventArgs e)
         {
@@ -42,6 +43,8 @@ namespace Projeto_Grupo_D
 
         private void cmdOrdena_Click(object sender, EventArgs e)
         {
+            Stopwatch stop = new Stopwatch();
+            stop.Start();
             var inicio = DateTime.Now;
 
             R = new int[guarda];
@@ -60,7 +63,7 @@ namespace Projeto_Grupo_D
             }
             else if (GB.Text == "Shell Sort")
             {
-                R = O.Shell_Sort(T);
+                R = O.ShellSort(T);
             }
             else if (GB.Text == "Merge Sort")
             {
@@ -77,8 +80,8 @@ namespace Projeto_Grupo_D
             lblTrocas.Text = O.troca.ToString();
             var fim = DateTime.Now;
             var Diferença = (fim - inicio).Milliseconds;
-            lblTempo.Text = Diferença.ToString() + "  Milisegundos";
-            
+            stop.Stop();
+            lblTempo.Text = stop.ElapsedMilliseconds.ToString() + "  Milisegundos";
         }
 
     }

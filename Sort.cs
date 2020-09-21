@@ -41,19 +41,22 @@ namespace Projeto_Grupo_D
             {
                 min = i;
                 for (int j = i + 1; j < array.Length; j++)
+                {
                     if (array[j] < array[min])
                     {
                         min = j;
                     }
-                if (min != i)
-                {
-                    aux = array[min];
-                    array[min] = array[i];
-                    array[i] = aux;
                 }
-                troca++;
+                if(i != min)
+                {
+                    //condição faz não ocorrer a troca se a posição de troca for a mesma 
+                    aux = array[i];
+                    array[i] = array[min];
+                    array[min] = aux;
+                    troca++;
+                }
             }
-            Console.WriteLine("Numero de trocas: " + troca/2); 
+            Console.WriteLine("Numero de trocas: " + troca); 
             return array;
         }
 
@@ -114,10 +117,10 @@ namespace Projeto_Grupo_D
             }
             esq = Merge_Sort(esq);
             dir = Merge_Sort(dir);
-            result = Merge(esq, dir, troca);
+            result = Merge(esq, dir);
             return result;
         }
-        public static int[] Merge(int[] esq, int[] dir, int troca)
+        public int[] Merge(int[] esq, int[] dir)
         {
             int resultado = dir.Length + esq.Length;
             int[] result = new int[resultado];
@@ -131,7 +134,6 @@ namespace Projeto_Grupo_D
                         result[iResultado] = esq[iLeft];
                         iLeft++;
                         iResultado++;
-                        troca++;
                     }
                     else
                     {
@@ -146,14 +148,12 @@ namespace Projeto_Grupo_D
                     result[iResultado] = esq[iLeft];
                     iLeft++;
                     iResultado++;
-                    troca++;
                 }
                 else if (iRight < dir.Length)
                 {
                     result[iResultado] = dir[iRight];
                     iRight++;
                     iResultado++;
-                    troca++;
                 }
             }
             return result;
@@ -165,12 +165,13 @@ namespace Projeto_Grupo_D
             int inicio = 0;
             int fim = vetor.Length - 1;
 
-            QuickSort(vetor, inicio, fim, troca);
+            QuickSort(vetor, inicio, fim);
 
             return vetor;
         }
-        private static void QuickSort(int[] vetor, int inicio, int fim, int troca)
+        private void QuickSort(int[] vetor, int inicio, int fim)
         {
+            troca++;
             if (inicio < fim)
             {
                 int p = vetor[inicio];
@@ -201,39 +202,39 @@ namespace Projeto_Grupo_D
                 vetor[inicio] = vetor[f];
                 vetor[f] = p;
 
-                QuickSort(vetor, inicio, f - 1, troca);
-                QuickSort(vetor, f + 1, fim, troca);
+                QuickSort(vetor, inicio, f - 1);
+                QuickSort(vetor, f + 1, fim);
             }
         }
 
         // Shell Sort
-        public int[] Shell_Sort(int[] array)
+        public int[] ShellSort(int[] vetor)
         {
-            int i, j, pos, temp;
-            int n = array.Length;
-            pos = 3;
-            while (pos > 0)
+            int i = 0, j = 0, pos = 0, h = 1; 
+            int n = vetor.Length;
+            while (h < n)
             {
-                for (i = 0; i < n; i++)
+                h = h * 3 + 1;
+            }
+            while (h > 0)
+            {
+                i = h + 1;
+                while (i < n)
                 {
-                    j = i;
-                    temp = array[i];
-                    while ((j >= pos) && (array[j - pos] > temp))
+                    pos = vetor[i];
+                    j = i - h;
+                    while ((j >= 0) && (vetor[j] > pos))
                     {
-                        array[j] = array[j - pos];
-                        j = j - pos;
+                        vetor[j + 1] = vetor[j];
+                        vetor[j] = pos;
+                        j = j - h;
                         troca++;
                     }
-                    array[j] = temp;
+                    i++;
                 }
-                if (pos / 2 != 0)
-                    pos = pos / 2;
-                else if (pos == 1)
-                    pos = 0;
-                else
-                    pos = 1;
+                h = h / 3;
             }
-            return array;
+            return vetor;
         }
     }
 
