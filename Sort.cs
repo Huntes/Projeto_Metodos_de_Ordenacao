@@ -117,10 +117,10 @@ namespace Projeto_Grupo_D
             }
             esq = Merge_Sort(esq);
             dir = Merge_Sort(dir);
-            result = Merge(esq, dir, troca);
+            result = Merge(esq, dir);
             return result;
         }
-        public static int[] Merge(int[] esq, int[] dir, int troca)
+        public int[] Merge(int[] esq, int[] dir)
         {
             int resultado = dir.Length + esq.Length;
             int[] result = new int[resultado];
@@ -134,7 +134,6 @@ namespace Projeto_Grupo_D
                         result[iResultado] = esq[iLeft];
                         iLeft++;
                         iResultado++;
-                        troca++;
                     }
                     else
                     {
@@ -149,14 +148,12 @@ namespace Projeto_Grupo_D
                     result[iResultado] = esq[iLeft];
                     iLeft++;
                     iResultado++;
-                    troca++;
                 }
                 else if (iRight < dir.Length)
                 {
                     result[iResultado] = dir[iRight];
                     iRight++;
                     iResultado++;
-                    troca++;
                 }
             }
             return result;
@@ -168,12 +165,13 @@ namespace Projeto_Grupo_D
             int inicio = 0;
             int fim = vetor.Length - 1;
 
-            QuickSort(vetor, inicio, fim, troca);
+            QuickSort(vetor, inicio, fim);
 
             return vetor;
         }
-        private static void QuickSort(int[] vetor, int inicio, int fim, int troca)
+        private void QuickSort(int[] vetor, int inicio, int fim)
         {
+            troca++;
             if (inicio < fim)
             {
                 int p = vetor[inicio];
@@ -204,13 +202,13 @@ namespace Projeto_Grupo_D
                 vetor[inicio] = vetor[f];
                 vetor[f] = p;
 
-                QuickSort(vetor, inicio, f - 1, troca);
-                QuickSort(vetor, f + 1, fim, troca);
+                QuickSort(vetor, inicio, f - 1);
+                QuickSort(vetor, f + 1, fim);
             }
         }
 
         // Shell Sort
-        public void ShellSort(int[] vetor)
+        public int[] ShellSort(int[] vetor)
         {
             int i = 0, j = 0, pos = 0, h = 1; 
             int n = vetor.Length;
@@ -230,11 +228,13 @@ namespace Projeto_Grupo_D
                         vetor[j + 1] = vetor[j];
                         vetor[j] = pos;
                         j = j - h;
+                        troca++;
                     }
                     i++;
                 }
                 h = h / 3;
             }
+            return vetor;
         }
     }
 
