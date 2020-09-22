@@ -23,7 +23,7 @@ namespace Projeto_Grupo_D
         int guarda = 0;
         int[] T;
         int[] R;
-        int[] V = { 5,8,6,2,7,3,9,4 };
+
 
         private void cmdGerar_Click(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace Projeto_Grupo_D
 
             for (int i = 0; i < dgArray.ColumnCount; i++)
             {
-                dgArray.Rows[0].Cells[i].Value = V[i];
+                dgArray.Rows[0].Cells[i].Value = N.Next(1,30);
                 T[i] = (int)dgArray.Rows[0].Cells[i].Value;
             }
         }
@@ -45,7 +45,6 @@ namespace Projeto_Grupo_D
         {
             Stopwatch stop = new Stopwatch();
             stop.Start();
-            var inicio = DateTime.Now;
 
             R = new int[guarda];
             var GB = gbMetodos.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked == true);
@@ -78,11 +77,15 @@ namespace Projeto_Grupo_D
                 dgArray.Rows[0].Cells[i].Value = R[i];
             }
             lblTrocas.Text = O.troca.ToString();
-            var fim = DateTime.Now;
-            var Diferença = (fim - inicio).Milliseconds;
             stop.Stop();
             lblTempo.Text = stop.ElapsedMilliseconds.ToString() + "  Milisegundos";
         }
 
+        private void cmdProximo_Click(object sender, EventArgs e)
+        {
+            Ordena02 F = new Ordena02();
+            this.Hide();
+            F.ShowDialog();
+        }
     }
 }

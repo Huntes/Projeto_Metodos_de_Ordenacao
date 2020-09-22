@@ -190,7 +190,7 @@
             this.cmdRetorna.Name = "cmdRetorna";
             this.cmdRetorna.Size = new System.Drawing.Size(75, 23);
             this.cmdRetorna.TabIndex = 6;
-            this.cmdRetorna.Text = "Retornar";
+            this.cmdRetorna.Text = "Limpar";
             this.cmdRetorna.UseVisualStyleBackColor = true;
             // 
             // lblTempo
@@ -247,6 +247,7 @@
             this.cmdProximo.TabIndex = 12;
             this.cmdProximo.Text = "Próximo";
             this.cmdProximo.UseVisualStyleBackColor = true;
+            this.cmdProximo.Click += new System.EventHandler(this.cmdProximo_Click);
             // 
             // Ordena01
             // 
