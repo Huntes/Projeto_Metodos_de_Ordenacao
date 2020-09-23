@@ -47,13 +47,10 @@ namespace Projeto_Grupo_D
                         min = j;
                     }
                 }
-               
-                    //condição faz não ocorrer a troca se a posição de troca for a mesma 
                     aux = array[i];
                     array[i] = array[min];
                     array[min] = aux;
                     troca++;
-                
             }
             Console.WriteLine("Numero de trocas: " + troca); 
             return array;
