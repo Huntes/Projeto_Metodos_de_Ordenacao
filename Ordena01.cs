@@ -36,7 +36,7 @@ namespace Projeto_Grupo_D
 
             for (int i = 0; i < dgArray.ColumnCount; i++)
             {
-                dgArray.Rows[0].Cells[i].Value = N.Next(1,30);
+                dgArray.Rows[0].Cells[i].Value = N.Next(1,100);
                 T[i] = (int)dgArray.Rows[0].Cells[i].Value;
             }
         }

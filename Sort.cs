@@ -9,7 +9,7 @@ namespace Projeto_Grupo_D
     class Sort
     {
         public Sort() { }
-        public int troca = 0;
+        public long troca = 0;
         //Insert Sort
         public int[] Insert_Sort(int[] array)
         {
@@ -47,14 +47,13 @@ namespace Projeto_Grupo_D
                         min = j;
                     }
                 }
-                if(i != min)
-                {
+               
                     //condição faz não ocorrer a troca se a posição de troca for a mesma 
                     aux = array[i];
                     array[i] = array[min];
                     array[min] = aux;
                     troca++;
-                }
+                
             }
             Console.WriteLine("Numero de trocas: " + troca); 
             return array;

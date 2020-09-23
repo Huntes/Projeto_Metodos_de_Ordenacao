@@ -22,23 +22,32 @@ namespace Projeto_Grupo_D
         Random P = new Random();
         int TAM = 10000;
         int[] vetorDezmil;
+        int[] insert = new int[10000];
+        int[] select = new int[10000];
+        int[] bubble = new int[10000];
+        int[] shell  = new int[10000];
+        int[] merge  = new int[10000];
+        int[] quick  = new int[10000];
 
         private void cmdGerar10_Click(object sender, EventArgs e)
         {
             vetorDezmil = new int[TAM];
-
             for (int i = 0; i < TAM; i++)
             {
-                vetorDezmil[i] = P.Next(1, 100000);
+                vetorDezmil[i] = P.Next(1, 10000);
             }
             MessageBox.Show("Vetor Gerado com sucesso !");
         }
 
         private void cmdInsert_Click(object sender, EventArgs e)
-        {
+        {           
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.Insert_Sort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                insert[i] = vetorDezmil[i];
+            }
+            S.Insert_Sort(insert);
             tempo.Stop();
             label2.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label3.Text = S.troca.ToString() + " Trocas";
@@ -49,7 +58,11 @@ namespace Projeto_Grupo_D
         {
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.Select_Sort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                select[i] = vetorDezmil[i];
+            }
+            S.Select_Sort(select);
             tempo.Stop();
             label4.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label5.Text = S.troca.ToString() + " Trocas";
@@ -60,7 +73,11 @@ namespace Projeto_Grupo_D
         {
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.BubbleSort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                bubble[i] = vetorDezmil[i];
+            }
+            S.BubbleSort(bubble);
             tempo.Stop();
             label6.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label7.Text = S.troca.ToString() + " Trocas";
@@ -71,7 +88,11 @@ namespace Projeto_Grupo_D
         {
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.ShellSort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                shell[i] = vetorDezmil[i];
+            }
+            S.ShellSort(shell);
             tempo.Stop();
             label8.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label9.Text = S.troca.ToString() + " Trocas";
@@ -82,7 +103,11 @@ namespace Projeto_Grupo_D
         {
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.Merge_Sort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                merge[i] = vetorDezmil[i];
+            }
+            S.Merge_Sort(merge);
             tempo.Stop();
             label10.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label11.Text = S.troca.ToString() + " Trocas";
@@ -93,7 +118,11 @@ namespace Projeto_Grupo_D
         {
             Stopwatch tempo = new Stopwatch();
             tempo.Start();
-            S.Quick_Sort(vetorDezmil);
+            for (int i = 0; i < vetorDezmil.Length; i++)
+            {
+                quick[i] = vetorDezmil[i];
+            }
+            S.Quick_Sort(quick);
             tempo.Stop();
             label12.Text = tempo.ElapsedMilliseconds.ToString() + " Ms";
             label13.Text = S.troca.ToString() + " Trocas";
